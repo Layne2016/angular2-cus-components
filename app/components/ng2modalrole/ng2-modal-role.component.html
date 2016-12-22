@@ -1,0 +1,41 @@
+<!-- control modal from parent component -->
+<button class="btn btn-primary" (click)="showModal()">显示</button>
+
+<div bsModal #lgModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+     aria-hidden="true" (onHidden)="onModalHidden()">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>角色管理</h3>
+            </div>
+            <div class="modal-body" style="display: flex;flex-direction: row;">
+                <div style="flex-grow: 1;border: 1px solid blueviolet" class="canScoll">
+                    <h4 style="border-bottom: 2px solid gray">人员列表</h4>
+                    <li *ngFor="let u of srcUsers" (click)="toggleSelectted(u,'+')" style="border: 1px solid green">
+                        <input type="checkbox" [checked]='u.checked'/>
+                        {{u.name}}
+                    </li>
+                </div>
+                <div style="margin: 20px;font-size: 20px">
+                    <div style="padding: 10px;border: 2px solid lightgreen;margin: 10px" (click)="addToRole()">+</div>
+                    <div style="padding: 10px;border: 2px solid lightgreen;margin: 10px" (click)="removeFromRole()">-
+                    </div>
+                </div>
+                <div style="flex-grow: 1;border: 1px solid blueviolet" class="canScoll">
+                    <h4 style="border-bottom: 2px solid gray">角色组:{{desRoleName}}</h4>
+                    <li *ngFor="let u of desUsers" (click)="toggleSelectted(u,'-')">
+                        <input type="checkbox" [checked]='u.checked'/>
+                        {{u.name}}
+                    </li>
+                </div>
+            </div>
+            <ul *ngIf="false" style="margin: 10px 0">
+
+            </ul>
+            <div style="display: flex">
+                <div style="margin: 10px;flex-grow: 1;justify-content: center" (click)="onSaveClick()">save</div>
+                <div style="margin: 10px ;flex-grow: 1;align-self: center" (click)="onCancle()">cancle</div>
+            </div>
+        </div>
+    </div>
+</div>

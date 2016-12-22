@@ -1,0 +1,13 @@
+<ul>
+    <li *ngFor="let node of visibleNodes" [ngStyle]="{'padding-left.px': (node.level-1)*50}">
+
+        <div *ngIf="!node.isLeft()" [ngStyle]="{'background':node.iconUrl}"
+             (click)="toggleExpand(node)"></div>
+
+        <div [ngStyle]="{'background':node.chooseStateIcon}"
+             (click)="toggleSelectted(node)" ></div>
+        <p (click)="toggleSelectted(node)" style="display: inline;padding-bottom: 20px" >{{node.label}}</p>
+    </li>
+</ul>
+
+

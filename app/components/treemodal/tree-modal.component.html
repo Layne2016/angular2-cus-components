@@ -1,0 +1,31 @@
+<!--<button type="button" class="btn btn-primary" (click)="showChildModal()" [innerHtml]="sanitize1('<div>11111</div>')"
+>Open </button>-->
+<div bsModal #childModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+     aria-hidden="true" (onHide)="onModalHidden()" (onShown)="onModalShown()">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content" style="width: 460px;margin: 80px auto">
+            <div class="modal-header">
+                <button type="button" class="close" (click)="hideChildModal()" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">{{_title}} </h4>
+            </div>
+            <div class="modal-body">
+                <div style=";height: 350px;overflow: auto">
+                    <tree-view *ngIf="treeViewShowFlag" #treeView [treeData]="_treeDatas"
+                               [defaultExpandLevel]="_defaultExpandLevel"></tree-view>
+                </div>
+            </div>
+            <div class="modal-footer" style="display: flex;flex-direction: row-reverse">
+                <div style="padding: 5px 20px;border-radius: 4px;background-color:green;" (click)="onConfirmClick()">
+                    {{_positiveButtonTiltle}}
+                </div>
+                <div style="padding: 5px 20px;border-radius: 4px;background-color:green;margin-right: 20px"
+                     (click)="hideChildModal()">{{_negativeButtonTitle}}
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
